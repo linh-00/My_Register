@@ -1,0 +1,7 @@
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister\obj\Debug\net8.0\Inc.MyRegister.csproj.AssemblyReference.cache
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister\obj\Debug\net8.0\Inc.MyRegister.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister\obj\Debug\net8.0\Inc.MyRegister.AssemblyInfoInputs.cache
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister\obj\Debug\net8.0\Inc.MyRegister.AssemblyInfo.cs
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister\obj\Debug\net8.0\Inc.MyRegister.csproj.CoreCompileInputs.cache
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister\obj\Debug\net8.0\Inc.MyRegister.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister\obj\Debug\net8.0\Inc.MyRegister.MvcApplicationPartsAssemblyInfo.cache
