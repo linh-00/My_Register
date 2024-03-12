@@ -11,4 +11,17 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCase\Emrpesas\" />
+    <Folder Include="UseCase\Funcionarios\" />
+    <Folder Include="UseCase\Usuarios\" />
+    <Folder Include="UseCase\Setores\" />
+    <Folder Include="UseCase\RegistroPontos\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Inc.MyRegister.DAL\Inc.MyRegister.DAL.csproj" />
+    <ProjectReference Include="..\Inc.MyRegister.Shared\Inc.MyRegister.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

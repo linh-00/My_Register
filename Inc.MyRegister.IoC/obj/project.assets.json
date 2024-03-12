@@ -961,6 +961,35 @@
             "rid": "win"
           }
         }
+      },
+      "Inc.MyRegister.DAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Inc.MyRegister.Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "8.0.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.1"
+        },
+        "compile": {
+          "bin/placeholder/Inc.MyRegister.DAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Inc.MyRegister.DAL.dll": {}
+        }
+      },
+      "Inc.MyRegister.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "8.0.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.1"
+        },
+        "compile": {
+          "bin/placeholder/Inc.MyRegister.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Inc.MyRegister.Domain.dll": {}
+        }
       }
     }
   },
@@ -2652,10 +2681,21 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Inc.MyRegister.DAL/1.0.0": {
+      "type": "project",
+      "path": "../Inc.MyRegister.DAL/Inc.MyRegister.DAL.csproj",
+      "msbuildProject": "../Inc.MyRegister.DAL/Inc.MyRegister.DAL.csproj"
+    },
+    "Inc.MyRegister.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Inc.MyRegister.Domain/Inc.MyRegister.Domain.csproj",
+      "msbuildProject": "../Inc.MyRegister.Domain/Inc.MyRegister.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Inc.MyRegister.DAL >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.1"
     ]
@@ -2691,7 +2731,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Alinne\\source\\repos\\Inc.MyRegister\\Inc.MyRegister.DAL\\Inc.MyRegister.DAL.csproj": {
+              "projectPath": "C:\\Users\\Alinne\\source\\repos\\Inc.MyRegister\\Inc.MyRegister.DAL\\Inc.MyRegister.DAL.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
