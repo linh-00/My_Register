@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Inc.MyRegister.Application.Interfaces.Funcionarios
 {
-    public interface IListFuncionarioUseCase : IUseCaseOnlyReponse<List<FuncionarioDTO>>
+    public interface IGetAllFuncionarioUseCase : IUseCaseOnlyReponse<List<FuncionarioDTO>>
     {
     }
 }

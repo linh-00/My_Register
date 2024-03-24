@@ -7,13 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UseCase\Emrpesas\" />
-    <Folder Include="UseCase\Funcionarios\" />
     <Folder Include="UseCase\Usuarios\" />
     <Folder Include="UseCase\Setores\" />
     <Folder Include="UseCase\RegistroPontos\" />

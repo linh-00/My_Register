@@ -21,7 +21,7 @@ namespace Inc.MyRegister.DAL.Repositories
         {
             this.dbMyRegister = dbMyRegister;
         }
-        public async Task<Empresas> InsertEmrpesaAsync(Empresas Request)
+        public async Task<Empresas> InsertEmpresaAsync(Empresas Request)
         {
             Empresa newEmpresa = new Empresa()
             {                
