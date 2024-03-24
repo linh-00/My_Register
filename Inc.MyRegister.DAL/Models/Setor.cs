@@ -13,5 +13,6 @@ namespace Inc.MyRegister.DAL.Models
         public bool FL_Status { get; set; }
         public Funcionario IdFuncionariosNavigation { get; set; }
         public Usuario IdUsuariosNavigation { get; set; }
+        public Empresa IdEmpresaNavigation { get; set; }
     }
 }

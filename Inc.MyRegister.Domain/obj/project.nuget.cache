@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "gnZ1wB2V2GMvq6V60FmPCyifk8t+SHYvZGuB8OSox5Dd22qrtNM0gE9tmbeNhYQFX5FzSWnhilMjBx33dvtOEQ==",
+  "dgSpecHash": "ILO5D0hS7pi10P0lUaeF0y9jnJmtEWEmAKvGcKXrWw2uGFucn9WhXitRzlOY+bRNxZVwEAqItD8iMIB852NgQQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Alinne\\source\\repos\\Inc.MyRegister\\Inc.MyRegister.Domain\\Inc.MyRegister.Domain.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Alinne\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Alinne\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Alinne\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\Alinne\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

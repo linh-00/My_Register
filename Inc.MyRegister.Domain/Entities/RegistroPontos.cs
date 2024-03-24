@@ -25,12 +25,10 @@ namespace Inc.MyRegister.Domain.Entities
         public RegistroPontos(
             string DT_Ponto
            , string TP_Ponto
-           , Funcionarios funcionarios
            ) : base()
         {
             this.DT_Ponto = DT_Ponto;
-            this.TP_Ponto = TP_Ponto;
-            Funcionarios = funcionarios;
+            this.TP_Ponto = TP_Ponto;           
         }
     }
 }

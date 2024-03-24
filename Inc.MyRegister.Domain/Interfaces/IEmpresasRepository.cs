@@ -9,7 +9,7 @@ namespace Inc.MyRegister.Domain.Interfaces
 {
     public interface IEmpresasRepository
     {
-        Task<Empresas> InsertEmrpesaAsync(Empresas Request);
+        Task<Empresas> InsertEmpresaAsync(Empresas Request);
         Task<IEnumerable<Empresas>> GetEmpresasAsync();
         Task<Empresas> GetEmpresasByIdAsync(int Id);
         Task<Empresas> UpdateEmpresasAsync(Empresas Request);
