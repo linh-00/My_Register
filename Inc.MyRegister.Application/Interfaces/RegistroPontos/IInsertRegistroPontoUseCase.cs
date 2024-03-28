@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inc.MyRegister.Application.Interfaces.Funcionarios
+namespace Inc.MyRegister.Application.Interfaces.RegistroPontos
 {
-    public interface IGetFuncionarioByIdUseCase : IUseCase<int, FuncionarioDTO>
+    public interface IInsertRegistroPontoUseCase : IUseCase<RegistroPontoDTO, RegistroPontoDTO>
     {
     }
 }

@@ -13,5 +13,6 @@ namespace Inc.MyRegister.Domain.Interfaces
         Task<IEnumerable<RegistroPontos>> GetAllRegistroPontosAsync();
         Task<RegistroPontos> GetRegistroPontosByIdAsync(int Id);
         Task<IEnumerable<RegistroPontos>> GetRegistroPontoByFuncionarioAsync(int FuncionarioId);
+        Task<IEnumerable<RegistroPontos>> GetRegistroPontoByEmpresaAsync(int EmpresaId);
     }
 }

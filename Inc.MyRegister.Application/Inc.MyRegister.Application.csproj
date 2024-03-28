@@ -15,7 +15,6 @@
   <ItemGroup>
     <Folder Include="UseCase\Usuarios\" />
     <Folder Include="UseCase\Setores\" />
-    <Folder Include="UseCase\RegistroPontos\" />
   </ItemGroup>
 
   <ItemGroup>

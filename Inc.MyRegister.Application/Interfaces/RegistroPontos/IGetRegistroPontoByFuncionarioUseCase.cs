@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Inc.MyRegister.Application.Interfaces.RegistroPontos
 {
-    public interface IListRegistroPontoByEmpresaUseCase : IUseCase<int, List<EmpresaDTO>>
+    public interface IGetRegistroPontoByFuncionarioUseCase : IUseCase<int, List<RegistroPontoDTO>>
     {
     }
 }
