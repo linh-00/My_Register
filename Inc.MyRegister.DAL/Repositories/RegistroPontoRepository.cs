@@ -111,5 +111,21 @@ namespace Inc.MyRegister.DAL.Repositories
                 return new RegistroPontos(res.Id, res.TP_Ponto, res.DT_Ponto, FuncionarioEntity);
             });
         }
+        public async Task<RegistroPontos> UpdateRegistroPontoAsync(RegistroPontos Request)
+        {
+            var entity = await dbMyRegister.RegistroPontos.Where(x => x.Id == Request.Id).FirstAsync();
+            if (entity == null)
+            {
+                entity.TP_Ponto = Request.TP_Ponto;
+                entity.DT_Ponto = Request.DT_Ponto;
+                await dbMyRegister.SaveChangesAsync();
+
+
+                await dbMyRegister.SaveChangesAsync();
+                return Request;
+            }
+            else
+                throw new Exception("Registro de Ponto não atualizado");
+        }
     }
 }
