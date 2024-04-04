@@ -36,6 +36,7 @@ namespace Inc.MyRegister.Application.UseCase.Funcionarios
                 var Funcionarios = await _FuncionariosRepository.GetAllFuncionariosAsync();
 
                 var FuncionariosDTO = _Mapper.Map<FuncionarioDTO>(request);
+
                 return result.SetSuccess(FuncionariosDTO);
             }
             catch (Exception ex)

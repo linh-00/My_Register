@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Inc.MyRegister.Application.Interfaces.Setores
 {
-    public interface IListSetorByEmpresaUseCase : IUseCase<int, List<SetorDTO>>
+    public interface IGetAllSetorUseCase : IUseCaseOnlyReponse<List<SetorDTO>>
     {
     }
 }
