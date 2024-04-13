@@ -35,7 +35,7 @@ namespace Inc.MyRegister.DAL.Repositories
             return Request;
         }
 
-        public async Task<IEnumerable<Usuarios>> GetUsuariosAsync()
+        public async Task<IEnumerable<Usuarios>> GetAllUsuariosAsync()
         {
             List<Usuario> entity  = await dbMyRegister.Usuarios.ToListAsync();
 

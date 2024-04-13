@@ -12,6 +12,10 @@ namespace Inc.MyRegister.Domain.Interfaces
         Task<Setores> InsertSetoresAsync(Setores Request);
         Task<IEnumerable<Setores>> GetAllSetoresAsync();
         Task<Setores> GetSetoresByIdAsync(int Id);
-        
+        Task<IEnumerable<Setores>> GetSetorByEmpresaAsync(int EmpresaId);
+        Task<IEnumerable<Setores>> GetSetorByFuncionarioAsync(int FuncionarioId);
+        Task<IEnumerable<Setores>> GetSetorByUsuarioAsync(int UsuarioId);
+
+
     }
 }

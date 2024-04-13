@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inc.MyRegister.Application.Interfaces.Setores
+namespace Inc.MyRegister.Application.Interfaces.Usuarios
 {
-    public interface IListSetorByFuncionarioUseCase : IUseCase<int, List<SetorDTO>>
+    public interface IUpdateUsuarioUseCase : IUseCase<UsuarioDTO, UsuarioDTO>
     {
     }
 }
