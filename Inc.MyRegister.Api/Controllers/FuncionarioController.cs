@@ -1,6 +1,10 @@
-﻿namespace Inc.MyRegister.Api.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace Inc.MyRegister.Api.Controllers
 {
-    public class FuncionarioController
+    [ApiController]
+    [Route("api/v1/[controller]")]
+    public class FuncionarioController : ControllerBase
     {
     }
 }
