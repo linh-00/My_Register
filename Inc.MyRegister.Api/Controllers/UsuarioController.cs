@@ -41,7 +41,7 @@ namespace Inc.MyRegister.Api.Controllers
             return _ActionResultConverter.Convert(response);
         }
 
-        [ProducesResponseType(typeof(List<UsuarioDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(UsuarioDTO), StatusCodes.Status200OK)]
         [Authorize]
         [HttpGet("{IdUsuario}")]
         public async Task<IActionResult> GetUsuarioById(int IdUsuario)
