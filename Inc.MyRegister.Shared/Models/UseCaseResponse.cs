@@ -1,9 +1,10 @@
-﻿using Inc.MyRegister.Shared.Constants;
+﻿using FluentValidation;
+using Inc.MyRegister.Shared.Constants;
 using Inc.MyRegister.Shared.Enuns;
+using Inc.MyRegister.Shared.Exceptions.DataBase;
 using Inc.MyRegister.Shared.Interface;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;

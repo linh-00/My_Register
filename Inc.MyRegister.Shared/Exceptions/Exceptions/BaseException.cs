@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Inc.MyRegister.Shared.Exceptions.Exceptions
 {
-    public class BaseException
+    public class BaseException : Exception
     {
         public IEnumerable<ErrorMessage> Errors { get; private set; }
 

@@ -1,6 +1,7 @@
 ﻿using Inc.MyRegister.DAL.Context;
 using Inc.MyRegister.DAL.Models;
 using Inc.MyRegister.Domain.Entities;
+using Inc.MyRegister.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Inc.MyRegister.DAL.Repositories
 {
-    public class FuncionariosRepository
+    public class FuncionariosRepository : IFuncionariosRepository
     {
         private dbMyRegisterContext dbMyRegister;
         public FuncionariosRepository(dbMyRegisterContext dbMyRegister)

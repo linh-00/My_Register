@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Inc.MyRegister.IoC.Repositories
 {
-    public class RepositoriesInjections
+    public static class RepositoriesInjections
     {
         public static IServiceCollection AddRepositories(this IServiceCollection services, IConfiguration configuration)
         {
@@ -20,5 +20,8 @@ namespace Inc.MyRegister.IoC.Repositories
             services.AddScoped<IRegistroPontosRepository, RegistroPontoRepository>();
             services.AddScoped<ISetorRepository, SetoresRepository>();
             services.AddScoped<IUsuariosRepository, UsuariosRepository>();
+
+            return services;
         }
+    }
 }

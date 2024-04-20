@@ -1,0 +1,6 @@
+@Inc.MyRegister.Api_HostAddress = http://localhost:5205
+
+GET {{Inc.MyRegister.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,4 +1,4 @@
-﻿using Inc.MyRegister.DAL.Entinties;
+﻿
 using Inc.MyRegister.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Empresa = Inc.MyRegister.DAL.Models.Empresa;
-using Setors = Inc.MyRegister.DAL.Entinties.Setors;
 
 namespace Inc.MyRegister.DAL.Context
 {
