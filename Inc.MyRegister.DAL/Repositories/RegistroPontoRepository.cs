@@ -66,7 +66,9 @@ namespace Inc.MyRegister.DAL.Repositories
                 return new RegistroPontos(entity.Id, entity.TP_Ponto, entity.DT_Ponto, FuncionarioEntity);
             }
             else
+            {
                 throw new Exception("Registro de Ponto não encontrado");
+            }
         }
         public async Task<IEnumerable<RegistroPontos>> GetRegistroPontoByFuncionarioAsync(int FuncionarioId) 
         {
@@ -87,6 +89,43 @@ namespace Inc.MyRegister.DAL.Repositories
 
                 return new RegistroPontos(res.Id, res.TP_Ponto, res.DT_Ponto, FuncionarioEntity);
             });
+
+        }
+        public async Task<IEnumerable<RegistroPontos>> GetRegistroPontoByEmpresaAsync(int EmpresaId)
+        {
+            List<RegistroPonto> entity = await dbMyRegister
+                .RegistroPontos
+                .Include(x => x.IdEmpresaNavigation)
+                .Include(x => x.IdFuncionarioNavigation)
+                .Where(x => x.Id ==  EmpresaId)
+                .ToListAsync();
+
+            return entity.Select(res =>
+            {
+                var Empresa = res.IdEmpresaNavigation;
+                var EmpresaEntity = new Empresas(Empresa.Id, Empresa.Nome, Empresa.CNPJ, Empresa.Dominio, Empresa.Contato, Empresa.Email, Empresa.Endereco);
+
+                var Funcionario = res.IdFuncionarioNavigation;
+                var FuncionarioEntity = new Funcionarios(Funcionario.Id, Funcionario.Nome, Funcionario.Contato, Funcionario.Email, Funcionario.Matricula, Funcionario.CPF, Funcionario.Setor, Funcionario.Cargo, EmpresaEntity);
+
+                return new RegistroPontos(res.Id, res.TP_Ponto, res.DT_Ponto, FuncionarioEntity);
+            });
+        }
+        public async Task<RegistroPontos> UpdateRegistroPontoAsync(RegistroPontos Request)
+        {
+            var entity = await dbMyRegister.RegistroPontos.Where(x => x.Id == Request.Id).FirstAsync();
+            if (entity == null)
+            {
+                entity.TP_Ponto = Request.TP_Ponto;
+                entity.DT_Ponto = Request.DT_Ponto;
+                await dbMyRegister.SaveChangesAsync();
+
+
+                await dbMyRegister.SaveChangesAsync();
+                return Request;
+            }
+            else
+                throw new Exception("Registro de Ponto não atualizado");
         }
     }
 }

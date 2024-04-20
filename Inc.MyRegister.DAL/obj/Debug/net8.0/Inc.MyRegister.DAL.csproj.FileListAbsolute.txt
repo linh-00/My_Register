@@ -2,3 +2,5 @@ C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.DAL\obj\Debug\net8.0\
 C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.DAL\obj\Debug\net8.0\Inc.MyRegister.DAL.AssemblyInfoInputs.cache
 C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.DAL\obj\Debug\net8.0\Inc.MyRegister.DAL.AssemblyInfo.cs
 C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.DAL\obj\Debug\net8.0\Inc.MyRegister.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.DAL\obj\Debug\net8.0\Inc.MyRegister.DAL.csproj.AssemblyReference.cache
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.DAL\obj\Debug\net8.0\Inc.MyRegister.DAL.sourcelink.json

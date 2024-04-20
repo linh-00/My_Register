@@ -1,0 +1,13 @@
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.Shared\obj\Debug\net8.0\Inc.MyRegister.Shared.csproj.AssemblyReference.cache
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.Shared\obj\Debug\net8.0\Inc.MyRegister.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.Shared\obj\Debug\net8.0\Inc.MyRegister.Shared.AssemblyInfoInputs.cache
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.Shared\obj\Debug\net8.0\Inc.MyRegister.Shared.AssemblyInfo.cs
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.Shared\obj\Debug\net8.0\Inc.MyRegister.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.Shared\obj\Debug\net8.0\Inc.MyRegister.Shared.sourcelink.json
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.Shared\bin\Debug\net8.0\Inc.MyRegister.Shared.deps.json
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.Shared\bin\Debug\net8.0\Inc.MyRegister.Shared.dll
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.Shared\bin\Debug\net8.0\Inc.MyRegister.Shared.pdb
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.Shared\obj\Debug\net8.0\Inc.MyRegister.Shared.dll
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.Shared\obj\Debug\net8.0\refint\Inc.MyRegister.Shared.dll
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.Shared\obj\Debug\net8.0\Inc.MyRegister.Shared.pdb
+C:\Users\Alinne\source\repos\Inc.MyRegister\Inc.MyRegister.Shared\obj\Debug\net8.0\ref\Inc.MyRegister.Shared.dll

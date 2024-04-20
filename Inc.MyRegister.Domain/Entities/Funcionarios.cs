@@ -45,7 +45,6 @@ namespace Inc.MyRegister.Domain.Entities
         , string cpf
         , string setor
         , string cargo
-        , Empresas empresa
         ) : base()
         {
             Nome = nome;
@@ -55,7 +54,6 @@ namespace Inc.MyRegister.Domain.Entities
             CPF = cpf;
             Setor = setor;
             Cargo = cargo;
-            Empresa = empresa;
         }
 
     }
