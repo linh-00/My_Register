@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Inc.MyRegister.Domain.Entities
+﻿namespace Inc.MyRegister.Domain.Entities
 {
     public class Funcionarios : BaseEntities
     {
@@ -26,7 +20,7 @@ namespace Inc.MyRegister.Domain.Entities
             , string setor
             , string cargo
             , Empresas empresa
-            ) : base (Id)
+            ) : base(Id)
         {
             Nome = nome;
             Contato = contato;

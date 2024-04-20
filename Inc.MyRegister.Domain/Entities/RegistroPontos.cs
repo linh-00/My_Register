@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Inc.MyRegister.Domain.Entities
+﻿namespace Inc.MyRegister.Domain.Entities
 {
     public class RegistroPontos : BaseEntities
     {
@@ -28,7 +22,7 @@ namespace Inc.MyRegister.Domain.Entities
            ) : base()
         {
             this.DT_Ponto = DT_Ponto;
-            this.TP_Ponto = TP_Ponto;           
+            this.TP_Ponto = TP_Ponto;
         }
     }
 }

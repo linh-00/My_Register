@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Inc.MyRegister.Application.Interfaces.Usuarios;
-using Inc.MyRegister.Api.Interfaces;
+﻿using Inc.MyRegister.Api.Interfaces;
 using Inc.MyRegister.Application.DTOs;
+using Inc.MyRegister.Application.Interfaces.Usuarios;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace Inc.MyRegister.Api.Controllers
