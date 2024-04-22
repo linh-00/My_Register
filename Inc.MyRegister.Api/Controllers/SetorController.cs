@@ -3,8 +3,9 @@
 namespace Inc.MyRegister.Api.Controllers
 {
     [ApiController]
-    [Route("api/v1/[controller]")]
+    [Route("api/v4/[controller]")]
     public class SetorController : ControllerBase
     {
+
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Inc.MyRegister.Api.Controllers
 {
     [ApiController]
-    [Route("api/v1/[controller]")]
+    [Route("api/v5/[controller]")]
     public class UsuarioController : ControllerBase
     {
         private readonly IGetAllUsuarioUseCase _GetAllUsuarioUseCase;
