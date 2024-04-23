@@ -41,13 +41,13 @@ namespace Inc.MyRegister.Api.Controllers
         [Authorize]
         [HttpGet("IdEmpresa")]
 
-        public async Task<IActionResult> GetFuncionarioByEmpresa(int IdEmpresa)
+        public async Task<IActionResult> GetFuncionarioByEmpresaId(int IdEmpresa)
         {
             var result = await _ListFuncionarioByEmpresaUseCase.Execute(IdEmpresa);
             return _ActionResultConverter.Convert(result);
         }
 
-        [ProducesResponseType(typeof(FuncionarioDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<FuncionarioDTO>), StatusCodes.Status200OK)]
         [Authorize]
         [HttpGet]
 

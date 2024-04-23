@@ -59,7 +59,7 @@ namespace Inc.MyRegister.Api.Controllers
             return _ActionResultConverter.Convert(result);
         }
 
-        [ProducesResponseType(typeof(RegistroPontoDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<RegistroPontoDTO>), StatusCodes.Status200OK)]
         [Authorize]
         [HttpGet]
 
