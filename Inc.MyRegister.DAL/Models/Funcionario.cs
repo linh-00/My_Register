@@ -1,23 +1,29 @@
-﻿using Inc.MyRegister.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Inc.MyRegister.DAL.Models
+namespace Inc.MyRegister.DAL.Models;
+
+public partial class FUNCIONARIO
 {
-    public class Funcionario
-    {
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public string Contato { get; set; }
-        public string Email { get; set; }
-        public string Matricula { get; set; }
-        public string CPF { get; set; }
-        public string Setor { get; set; }
-        public string Cargo { get; set; }
-        public Empresa IdEmpresaNavigation { get; set; } = null!;
-        public virtual ICollection<Funcionario> Funcionarios { get; set; } = new List<Funcionario>();
-    }
+    public int ID_FUNCIONARIO { get; set; }
+
+    public int ID_EMPRESA { get; set; }
+
+    public string DS_NOME { get; set; } = null!;
+
+    public string CONTATO_FUNCIONARIO { get; set; } = null!;
+
+    public string EMAIL_CORPORATIVO { get; set; } = null!;
+
+    public string MATRICULA { get; set; } = null!;
+
+    public string CPF { get; set; } = null!;
+
+    public string SETOR { get; set; } = null!;
+
+    public string CARGO { get; set; } = null!;
+
+    public virtual EMPRESA ID_EMPRESANavigation { get; set; } = null!;
+
+    public virtual ICollection<REGISTRO_PONTO> REGISTRO_PONTOs { get; set; } = new List<REGISTRO_PONTO>();
 }

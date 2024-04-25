@@ -1,4 +1,4 @@
-﻿using Inc.MyRegister.DAL.Context;
+﻿using Inc.MyRegister.DAL.Contexts;
 using Inc.MyRegister.IoC.Mappins;
 using Inc.MyRegister.IoC.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +16,7 @@ namespace Inc.MyRegister.IoC
     {
         public static IServiceCollection AddInfraestructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<dbMyRegisterContext>(options => options.UseSqlServer(configuration.GetConnectionString("MyRegister")), ServiceLifetime.Transient);
+            services.AddDbContext<MyRegisterContext>(options => options.UseSqlServer(configuration.GetConnectionString("MyRegister")), ServiceLifetime.Transient);
             services.AddRepositories(configuration);
             //services.AddUseCases(configuration);
             //services.AddServices(configuration);

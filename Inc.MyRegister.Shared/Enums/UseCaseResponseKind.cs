@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inc.MyRegister.Shared.Enuns
+namespace Inc.MyRegister.Shared.Enums
 {
     public enum UseCaseResponseKind
     {

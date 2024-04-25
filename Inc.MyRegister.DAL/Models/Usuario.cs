@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Inc.MyRegister.DAL.Models
+namespace Inc.MyRegister.DAL.Models;
+
+public partial class USUARIO
 {
-    public class Usuario
-    {
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public string Cargo { get; set; }
-        public string Email { get; set; }
-        public string Senha { get; set; }
-        public virtual ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();        
-    }
+    public int ID_USUARIO { get; set; }
+
+    public string DS_NOME { get; set; } = null!;
+
+    public string TP_CARGO { get; set; } = null!;
+
+    public string DS_EMAIL { get; set; } = null!;
+
+    public string DS_SENHA { get; set; } = null!;
 }

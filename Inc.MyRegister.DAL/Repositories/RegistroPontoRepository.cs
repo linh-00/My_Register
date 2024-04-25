@@ -1,20 +1,15 @@
-﻿using Inc.MyRegister.DAL.Context;
+﻿using Inc.MyRegister.DAL.Contexts;
 using Inc.MyRegister.DAL.Models;
 using Inc.MyRegister.Domain.Entities;
 using Inc.MyRegister.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Inc.MyRegister.DAL.Repositories
 {
     public class RegistroPontoRepository : IRegistroPontosRepository
     {
-        private dbMyRegisterContext dbMyRegister;
-        public RegistroPontoRepository(dbMyRegisterContext dbMyRegister)
+        private MyRegisterContext dbMyRegister;
+        public RegistroPontoRepository(MyRegisterContext dbMyRegister)
         {
             this.dbMyRegister = dbMyRegister;
         }
@@ -23,7 +18,7 @@ namespace Inc.MyRegister.DAL.Repositories
             RegistroPonto newRegistroPonto = new RegistroPonto()
             {
                 DT_Ponto = Request.DT_Ponto,
-                TP_Ponto  = Request.TP_Ponto,                
+                TP_Ponto = Request.TP_Ponto,
             };
             dbMyRegister.RegistroPontos.Add(newRegistroPonto);
             await dbMyRegister.SaveChangesAsync();
@@ -40,10 +35,10 @@ namespace Inc.MyRegister.DAL.Repositories
             return entity.Select(res =>
             {
                 var Empresa = res.IdEmpresaNavigation;
-                var EmpresaEntity = new Empresas(Empresa.Id, Empresa.Nome, Empresa.CNPJ,Empresa.Dominio, Empresa.Contato, Empresa.Email, Empresa.Endereco);
+                var EmpresaEntity = new Empresas(Empresa.Id, Empresa.Nome, Empresa.CNPJ, Empresa.Dominio, Empresa.Contato, Empresa.Email, Empresa.Endereco);
 
                 var Funcionario = res.IdFuncionarioNavigation;
-                var FuncionarioEntity = new Funcionarios(Funcionario.Id, Funcionario.Nome, Funcionario.Contato,Funcionario.Email, Funcionario.Matricula,Funcionario.CPF, Funcionario.Setor, Funcionario.Cargo, EmpresaEntity);
+                var FuncionarioEntity = new Funcionarios(Funcionario.Id, Funcionario.Nome, Funcionario.Contato, Funcionario.Email, Funcionario.Matricula, Funcionario.CPF, Funcionario.Setor, Funcionario.Cargo, EmpresaEntity);
 
                 return new RegistroPontos(res.Id, res.TP_Ponto, res.DT_Ponto, FuncionarioEntity);
             });
@@ -62,7 +57,7 @@ namespace Inc.MyRegister.DAL.Repositories
 
                 var Funcionario = entity.IdFuncionarioNavigation;
                 var FuncionarioEntity = new Funcionarios(Funcionario.Id, Funcionario.Nome, Funcionario.Contato, Funcionario.Email, Funcionario.Matricula, Funcionario.CPF, Funcionario.Setor, Funcionario.Cargo, EmpresaEntity);
-                
+
                 return new RegistroPontos(entity.Id, entity.TP_Ponto, entity.DT_Ponto, FuncionarioEntity);
             }
             else
@@ -70,7 +65,7 @@ namespace Inc.MyRegister.DAL.Repositories
                 throw new Exception("Registro de Ponto não encontrado");
             }
         }
-        public async Task<IEnumerable<RegistroPontos>> GetRegistroPontoByFuncionarioAsync(int FuncionarioId) 
+        public async Task<IEnumerable<RegistroPontos>> GetRegistroPontoByFuncionarioAsync(int FuncionarioId)
         {
             List<RegistroPonto> entity = await dbMyRegister
                 .RegistroPontos
@@ -97,7 +92,7 @@ namespace Inc.MyRegister.DAL.Repositories
                 .RegistroPontos
                 .Include(x => x.IdEmpresaNavigation)
                 .Include(x => x.IdFuncionarioNavigation)
-                .Where(x => x.Id ==  EmpresaId)
+                .Where(x => x.Id == EmpresaId)
                 .ToListAsync();
 
             return entity.Select(res =>

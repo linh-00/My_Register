@@ -1,66 +1,61 @@
-﻿using Inc.MyRegister.DAL.Context;
+﻿using Inc.MyRegister.DAL.Contexts;
 using Inc.MyRegister.DAL.Models;
 using Inc.MyRegister.Domain.Entities;
 using Inc.MyRegister.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Inc.MyRegister.DAL.Repositories
 {
     public class FuncionariosRepository : IFuncionariosRepository
     {
-        private dbMyRegisterContext dbMyRegister;
-        public FuncionariosRepository(dbMyRegisterContext dbMyRegister)
+        private MyRegisterContext dbMyRegister;
+        public FuncionariosRepository(MyRegisterContext dbMyRegister)
         {
             this.dbMyRegister = dbMyRegister;
         }
         public async Task<Funcionarios> InsertFuncionariosAsync(Funcionarios Request)
         {
-            Funcionario newFuncionarios = new Funcionario()
+            FUNCIONARIO newFuncionarios = new FUNCIONARIO()
             {
-                Nome = Request.Nome,
-                Contato = Request.Contato,
-                Email = Request.Email,
-                Matricula = Request.Matricula,
+                DS_NOME = Request.Nome,
+                CONTATO_FUNCIONARIO = Request.Contato,
+                EMAIL_CORPORATIVO = Request.Email,
+                MATRICULA = Request.Matricula,
                 CPF = Request.CPF,
-                Setor = Request.Setor,
-                Cargo = Request.Cargo,
+                SETOR = Request.Setor,
+                CARGO = Request.Cargo,
             };
 
-            dbMyRegister.Funcionarios.Add(newFuncionarios);
+            dbMyRegister.FUNCIONARIOs.Add(newFuncionarios);
             await dbMyRegister.SaveChangesAsync();
-            Request.SetId(newFuncionarios.Id);
+            Request.SetId(newFuncionarios.ID_FUNCIONARIO);
             return Request;
         }
         public async Task<IEnumerable<Funcionarios>> GetAllFuncionariosAsync()
         {
-            List<Funcionario> entity = await dbMyRegister.Funcionarios
-                .Include(x => x.IdEmpresaNavigation)
+            List<FUNCIONARIO> entity = await dbMyRegister.FUNCIONARIOs
+                .Include(x => x.ID_EMPRESANavigation)
                 .ToListAsync();
             return entity.Select(res =>
             {
-                var Empresa = res.IdEmpresaNavigation;
-                var EmpresaEntity = new Empresas(Empresa.Id, Empresa.Nome, Empresa.CNPJ, Empresa.Dominio, Empresa.Contato, Empresa.Email, Empresa.Endereco);
+                var Empresa = res.ID_EMPRESANavigation;
+                var EmpresaEntity = new Empresas(Empresa.ID_EMPRESA, Empresa.DS_NOME, Empresa.CNPJ, Empresa.DOMINIO, Empresa.CONTATO_COPERATIVO, Empresa.EMAIL, Empresa.ENDERECO);
 
-                return new Funcionarios(res.Id, res.Nome, res.Contato, res.Email, res.Matricula, res.CPF, res.Setor, res.Cargo, EmpresaEntity);
+                return new Funcionarios(res.ID_FUNCIONARIO, res.DS_NOME, res.CONTATO_FUNCIONARIO, res.EMAIL_CORPORATIVO, res.MATRICULA, res.CPF, res.SETOR, res.CARGO, EmpresaEntity);
             });
         }
         public async Task<Funcionarios> GetFuncionariosByIdAsync(int id)
         {
-            var entity = await dbMyRegister.Funcionarios
-                .Include(x => x.IdEmpresaNavigation)
-                .Where(x =>  x.Id == id)
+            var entity = await dbMyRegister.FUNCIONARIOs
+                .Include(x => x.ID_EMPRESANavigation)
+                .Where(x => x.ID_FUNCIONARIO == id)
                 .FirstAsync();
             if (entity is not null)
             {
-                var Empresa = entity.IdEmpresaNavigation;
-                var EmpresaEntity = new Empresas(Empresa.Id, Empresa.Nome, Empresa.CNPJ, Empresa.Dominio, Empresa.Contato, Empresa.Email, Empresa.Endereco);
+                var Empresa = entity.ID_EMPRESANavigation;
+                var EmpresaEntity = new Empresas(Empresa.ID_EMPRESA, Empresa.DS_NOME, Empresa.CNPJ, Empresa.DOMINIO, Empresa.CONTATO_COPERATIVO, Empresa.EMAIL, Empresa.ENDERECO);
 
-                return new Funcionarios(entity.Id, entity.Nome, entity.Contato, entity.Email, entity.Matricula, entity.CPF, entity.Setor, entity.Cargo, EmpresaEntity);                
+                return new Funcionarios(entity.ID_FUNCIONARIO, entity.DS_NOME, entity.CONTATO_FUNCIONARIO, entity.EMAIL_CORPORATIVO, entity.MATRICULA, entity.CPF, entity.SETOR, entity.CARGO, EmpresaEntity);
             }
             else
                 throw new Exception("Funcionário não encontrado");
@@ -68,20 +63,20 @@ namespace Inc.MyRegister.DAL.Repositories
         }
         public async Task<IEnumerable<Funcionarios>> GetFuncionariosByEmpresaIdAsync(int EmpresaId)
         {
-           List<Funcionario> entity = await dbMyRegister
-                .Funcionarios
-                .Include(x => x.IdEmpresaNavigation)
-                .Where(x => x.Id == EmpresaId)
-                .ToListAsync();
+            List<FUNCIONARIO> entity = await dbMyRegister
+                 .FUNCIONARIOs
+                 .Include(x => x.ID_EMPRESANavigation)
+                 .Where(x => x.ID_EMPRESA == EmpresaId)
+                 .ToListAsync();
 
             return entity.Select(res =>
             {
-                var Empresa = res.IdEmpresaNavigation;
-                var EmpresaEntity = new Empresas(Empresa.Id, Empresa.Nome, Empresa.CNPJ, Empresa.Dominio, Empresa.Contato, Empresa.Email, Empresa.Endereco);
+                var Empresa = res.ID_EMPRESANavigation;
+                var EmpresaEntity = new Empresas(Empresa.ID_EMPRESA, Empresa.DS_NOME, Empresa.CNPJ, Empresa.DOMINIO, Empresa.CONTATO_COPERATIVO, Empresa.EMAIL, Empresa.ENDERECO);
 
-                return new Funcionarios(res.Id, res.Nome, res.Contato, res.Email, res.Matricula, res.CPF, res.Setor, res.Cargo, EmpresaEntity);
-            });          
-          
-        }       
+                return new Funcionarios(res.ID_EMPRESA, res.DS_NOME, res.CONTATO_FUNCIONARIO, res.EMAIL_CORPORATIVO, res.MATRICULA, res.CPF, res.SETOR, res.CARGO, EmpresaEntity);
+            });
+
+        }
     }
 }

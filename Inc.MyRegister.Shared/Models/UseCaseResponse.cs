@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using Inc.MyRegister.Shared.Constants;
-using Inc.MyRegister.Shared.Enuns;
+using Inc.MyRegister.Shared.Enums;
 using Inc.MyRegister.Shared.Exceptions.DataBase;
 using Inc.MyRegister.Shared.Interface;
 using System;

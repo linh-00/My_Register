@@ -1,7 +1,5 @@
 ﻿using Azure.Core;
-using Inc.MyRegister.DAL.Context;
 using Inc.MyRegister.Domain.Interfaces;
-using Inc.MyRegister.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,13 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Inc.MyRegister.Domain.Entities;
+using Inc.MyRegister.DAL.Contexts;
+using Inc.MyRegister.DAL.Models;
 
 namespace Inc.MyRegister.DAL.Repositories
 {
     public class UsuariosRepository : IUsuariosRepository
     {
-        private dbMyRegisterContext dbMyRegister;
-        public UsuariosRepository(dbMyRegisterContext dbMyRegister)
+        private MyRegisterContext dbMyRegister;
+        public UsuariosRepository(MyRegisterContext dbMyRegister)
         {
             this.dbMyRegister = dbMyRegister;
         }

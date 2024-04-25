@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inc.MyRegister.Domain.Entities
+namespace Inc.MyRegister.DAL.Repositories
 {
     public class BaseEntities
     {
