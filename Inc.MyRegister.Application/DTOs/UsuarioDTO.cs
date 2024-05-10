@@ -1,9 +1,4 @@
 ﻿using Inc.MyRegister.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Inc.MyRegister.Application.DTOs
 {
@@ -16,7 +11,7 @@ namespace Inc.MyRegister.Application.DTOs
         public string Senha { get; set; }
         public Usuarios ToEntity()
         {
-            return new Usuarios(Id, Nome, Cargo, Email, Senha);
+            return new Usuarios(Nome, Cargo, Email, Senha);
         }
     }
 }

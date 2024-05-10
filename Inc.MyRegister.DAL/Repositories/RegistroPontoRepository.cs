@@ -15,50 +15,50 @@ namespace Inc.MyRegister.DAL.Repositories
         }
         public async Task<RegistroPontos> InsertRegistroPontoRepositoryAsync(RegistroPontos Request)
         {
-            RegistroPonto newRegistroPonto = new RegistroPonto()
+            REGISTRO_PONTO newRegistroPonto = new REGISTRO_PONTO()
             {
-                DT_Ponto = Request.DT_Ponto,
-                TP_Ponto = Request.TP_Ponto,
+                DT_PONTO = Request.DT_PONTO,
+                TP_Ponto = Request.TP_Ponto
             };
-            dbMyRegister.RegistroPontos.Add(newRegistroPonto);
+            dbMyRegister.REGISTRO_PONTOs.Add(newRegistroPonto);
             await dbMyRegister.SaveChangesAsync();
-            Request.SetId(newRegistroPonto.Id);
+            Request.SetId(newRegistroPonto.ID_REGISTRO_PONTO);
             return Request;
         }
 
         public async Task<IEnumerable<RegistroPontos>> GetAllRegistroPontosAsync()
         {
-            List<RegistroPonto> entity = await dbMyRegister.RegistroPontos
-                .Include(x => x.IdFuncionarioNavigation)
-                .Include(x => x.IdEmpresaNavigation)
+            List<REGISTRO_PONTO> entity = await dbMyRegister.REGISTRO_PONTOs
+                .Include(x => x.ID_FUNCIONARIONavigation)
+                .Include(x => x.ID_EMPRESANavigation)
                 .ToListAsync();
             return entity.Select(res =>
             {
-                var Empresa = res.IdEmpresaNavigation;
-                var EmpresaEntity = new Empresas(Empresa.Id, Empresa.Nome, Empresa.CNPJ, Empresa.Dominio, Empresa.Contato, Empresa.Email, Empresa.Endereco);
+                var Empresa = res.ID_EMPRESANavigation;
+                var EmpresaEntity = new Empresas(Empresa.ID_EMPRESA, Empresa.DS_NOME, Empresa.CNPJ, Empresa.DOMINIO, Empresa.CONTATO_COPERATIVO, Empresa.EMAIL, Empresa.ENDERECO);
 
-                var Funcionario = res.IdFuncionarioNavigation;
-                var FuncionarioEntity = new Funcionarios(Funcionario.Id, Funcionario.Nome, Funcionario.Contato, Funcionario.Email, Funcionario.Matricula, Funcionario.CPF, Funcionario.Setor, Funcionario.Cargo, EmpresaEntity);
+                var Funcionario = res.ID_FUNCIONARIONavigation;
+                var FuncionarioEntity = new Funcionarios(Funcionario.ID_FUNCIONARIO, Funcionario.DS_NOME, Funcionario.CONTATO_FUNCIONARIO, Funcionario.EMAIL_CORPORATIVO, Funcionario.MATRICULA, Funcionario.CPF, Funcionario.SETOR, Funcionario.CARGO, EmpresaEntity);
 
-                return new RegistroPontos(res.Id, res.TP_Ponto, res.DT_Ponto, FuncionarioEntity);
+                return new RegistroPontos(res.ID_FUNCIONARIO, res.DT_PONTO, res.TP_Ponto, FuncionarioEntity, EmpresaEntity);
             });
         }
         public async Task<RegistroPontos> GetRegistroPontosByIdAsync(int Id)
         {
-            var entity = await dbMyRegister.RegistroPontos
-               .Where(x => x.Id == Id)
-               .Include(x => x.IdEmpresaNavigation)
-               .Include(x => x.IdFuncionarioNavigation)
+            var entity = await dbMyRegister.REGISTRO_PONTOs
+               .Where(x => x.ID_REGISTRO_PONTO == Id)
+               .Include(x => x.ID_EMPRESANavigation)
+               .Include(x => x.ID_FUNCIONARIONavigation)
                .FirstAsync();
             if (entity is not null)
             {
-                var Empresa = entity.IdEmpresaNavigation;
-                var EmpresaEntity = new Empresas(Empresa.Id, Empresa.Nome, Empresa.CNPJ, Empresa.Dominio, Empresa.Contato, Empresa.Email, Empresa.Endereco);
+                var Empresa = entity.ID_EMPRESANavigation;
+                var EmpresaEntity = new Empresas(Empresa.ID_EMPRESA, Empresa.DS_NOME, Empresa.CNPJ, Empresa.DOMINIO, Empresa.CONTATO_COPERATIVO, Empresa.EMAIL, Empresa.ENDERECO);
 
-                var Funcionario = entity.IdFuncionarioNavigation;
-                var FuncionarioEntity = new Funcionarios(Funcionario.Id, Funcionario.Nome, Funcionario.Contato, Funcionario.Email, Funcionario.Matricula, Funcionario.CPF, Funcionario.Setor, Funcionario.Cargo, EmpresaEntity);
+                var Funcionario = entity.ID_FUNCIONARIONavigation;
+                var FuncionarioEntity = new Funcionarios(Funcionario.ID_EMPRESA, Funcionario.DS_NOME, Funcionario.CONTATO_FUNCIONARIO, Funcionario.EMAIL_CORPORATIVO, Funcionario.MATRICULA, Funcionario.CPF, Funcionario.SETOR, Funcionario.CARGO, EmpresaEntity);
 
-                return new RegistroPontos(entity.Id, entity.TP_Ponto, entity.DT_Ponto, FuncionarioEntity);
+                return new RegistroPontos(entity.ID_REGISTRO_PONTO, entity.DT_PONTO, entity.TP_Ponto, FuncionarioEntity, EmpresaEntity);
             }
             else
             {
@@ -67,52 +67,52 @@ namespace Inc.MyRegister.DAL.Repositories
         }
         public async Task<IEnumerable<RegistroPontos>> GetRegistroPontoByFuncionarioAsync(int FuncionarioId)
         {
-            List<RegistroPonto> entity = await dbMyRegister
-                .RegistroPontos
-                .Include(x => x.IdEmpresaNavigation)
-                .Include(x => x.IdFuncionarioNavigation)
-                .Where(x => x.Id == FuncionarioId)
+            List<REGISTRO_PONTO> entity = await dbMyRegister
+                .REGISTRO_PONTOs
+                .Include(x => x.ID_EMPRESANavigation)
+                .Include(x => x.ID_FUNCIONARIONavigation)
+                .Where(x => x.ID_REGISTRO_PONTO == FuncionarioId)
                 .ToListAsync();
 
             return entity.Select(res =>
             {
-                var Empresa = res.IdEmpresaNavigation;
-                var EmpresaEntity = new Empresas(Empresa.Id, Empresa.Nome, Empresa.CNPJ, Empresa.Dominio, Empresa.Contato, Empresa.Email, Empresa.Endereco);
+                var Empresa = res.ID_EMPRESANavigation;
+                var EmpresaEntity = new Empresas(Empresa.ID_EMPRESA, Empresa.DS_NOME, Empresa.CNPJ, Empresa.DOMINIO, Empresa.CONTATO_COPERATIVO, Empresa.EMAIL, Empresa.ENDERECO);
 
-                var Funcionario = res.IdFuncionarioNavigation;
-                var FuncionarioEntity = new Funcionarios(Funcionario.Id, Funcionario.Nome, Funcionario.Contato, Funcionario.Email, Funcionario.Matricula, Funcionario.CPF, Funcionario.Setor, Funcionario.Cargo, EmpresaEntity);
+                var Funcionario = res.ID_FUNCIONARIONavigation;
+                var FuncionarioEntity = new Funcionarios(Funcionario.ID_FUNCIONARIO, Funcionario.DS_NOME, Funcionario.CONTATO_FUNCIONARIO, Funcionario.EMAIL_CORPORATIVO, Funcionario.MATRICULA, Funcionario.CPF, Funcionario.SETOR, Funcionario.CARGO, EmpresaEntity);
 
-                return new RegistroPontos(res.Id, res.TP_Ponto, res.DT_Ponto, FuncionarioEntity);
+                return new RegistroPontos(res.ID_REGISTRO_PONTO, res.DT_PONTO, res.TP_Ponto, FuncionarioEntity, EmpresaEntity);
             });
 
         }
         public async Task<IEnumerable<RegistroPontos>> GetRegistroPontoByEmpresaAsync(int EmpresaId)
         {
-            List<RegistroPonto> entity = await dbMyRegister
-                .RegistroPontos
-                .Include(x => x.IdEmpresaNavigation)
-                .Include(x => x.IdFuncionarioNavigation)
-                .Where(x => x.Id == EmpresaId)
+            List<REGISTRO_PONTO> entity = await dbMyRegister
+                .REGISTRO_PONTOs
+                .Include(x => x.ID_EMPRESANavigation)
+                .Include(x => x.ID_FUNCIONARIONavigation)
+                .Where(x => x.ID_REGISTRO_PONTO == EmpresaId)
                 .ToListAsync();
 
             return entity.Select(res =>
             {
-                var Empresa = res.IdEmpresaNavigation;
-                var EmpresaEntity = new Empresas(Empresa.Id, Empresa.Nome, Empresa.CNPJ, Empresa.Dominio, Empresa.Contato, Empresa.Email, Empresa.Endereco);
+                var Empresa = res.ID_EMPRESANavigation;
+                var EmpresaEntity = new Empresas(Empresa.ID_EMPRESA, Empresa.DS_NOME, Empresa.CNPJ, Empresa.DOMINIO, Empresa.CONTATO_COPERATIVO, Empresa.EMAIL, Empresa.ENDERECO);
 
-                var Funcionario = res.IdFuncionarioNavigation;
-                var FuncionarioEntity = new Funcionarios(Funcionario.Id, Funcionario.Nome, Funcionario.Contato, Funcionario.Email, Funcionario.Matricula, Funcionario.CPF, Funcionario.Setor, Funcionario.Cargo, EmpresaEntity);
+                var Funcionario = res.ID_FUNCIONARIONavigation;
+                var FuncionarioEntity = new Funcionarios(Funcionario.ID_FUNCIONARIO, Funcionario.DS_NOME, Funcionario.CONTATO_FUNCIONARIO, Funcionario.EMAIL_CORPORATIVO, Funcionario.MATRICULA, Funcionario.CPF, Funcionario.SETOR, Funcionario.CARGO, EmpresaEntity);
 
-                return new RegistroPontos(res.Id, res.TP_Ponto, res.DT_Ponto, FuncionarioEntity);
+                return new RegistroPontos(res.ID_REGISTRO_PONTO, res.DT_PONTO, res.TP_Ponto, FuncionarioEntity, EmpresaEntity);
             });
         }
         public async Task<RegistroPontos> UpdateRegistroPontoAsync(RegistroPontos Request)
         {
-            var entity = await dbMyRegister.RegistroPontos.Where(x => x.Id == Request.Id).FirstAsync();
+            var entity = await dbMyRegister.REGISTRO_PONTOs.Where(x => x.ID_REGISTRO_PONTO == Request.Id).FirstAsync();
             if (entity == null)
             {
                 entity.TP_Ponto = Request.TP_Ponto;
-                entity.DT_Ponto = Request.DT_Ponto;
+                entity.DT_PONTO = Request.DT_PONTO;
                 await dbMyRegister.SaveChangesAsync();
 
 
@@ -122,5 +122,7 @@ namespace Inc.MyRegister.DAL.Repositories
             else
                 throw new Exception("Registro de Ponto não atualizado");
         }
+
     }
 }
+

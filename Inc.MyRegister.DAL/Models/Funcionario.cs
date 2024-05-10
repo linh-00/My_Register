@@ -26,4 +26,6 @@ public partial class FUNCIONARIO
     public virtual EMPRESA ID_EMPRESANavigation { get; set; } = null!;
 
     public virtual ICollection<REGISTRO_PONTO> REGISTRO_PONTOs { get; set; } = new List<REGISTRO_PONTO>();
+
+    public virtual ICollection<SETOR> SETORs { get; set; } = new List<SETOR>();
 }

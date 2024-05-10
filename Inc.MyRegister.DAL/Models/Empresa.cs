@@ -20,4 +20,6 @@ public partial class EMPRESA
     public string ENDERECO { get; set; } = null!;
 
     public virtual ICollection<FUNCIONARIO> FUNCIONARIOs { get; set; } = new List<FUNCIONARIO>();
+
+    public virtual ICollection<SETOR> SETORs { get; set; } = new List<SETOR>();
 }

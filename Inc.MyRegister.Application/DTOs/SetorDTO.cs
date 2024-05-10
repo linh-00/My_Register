@@ -1,10 +1,4 @@
-﻿using Inc.MyRegister.DAL.Models;
-using Inc.MyRegister.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Inc.MyRegister.Domain.Entities;
 
 namespace Inc.MyRegister.Application.DTOs
 {

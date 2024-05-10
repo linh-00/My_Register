@@ -58,7 +58,6 @@ namespace Inc.MyRegister.Api.Controllers
         }
 
         [ProducesResponseType(typeof(FuncionarioDTO), StatusCodes.Status200OK)]
-        [Authorize]
         [HttpPost]
 
         public async Task<IActionResult> InsertFuncionario(FuncionarioDTO response)

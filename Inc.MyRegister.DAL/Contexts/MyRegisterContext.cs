@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Inc.MyRegister.DAL.Models;
+﻿using Inc.MyRegister.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Inc.MyRegister.DAL.Contexts;
@@ -22,10 +20,12 @@ public partial class MyRegisterContext : DbContext
 
     public virtual DbSet<REGISTRO_PONTO> REGISTRO_PONTOs { get; set; }
 
+    public virtual DbSet<SETOR> SETORs { get; set; }
+
     public virtual DbSet<USUARIO> USUARIOs { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=localhost, 1433; Initial Catalog=MyRegister; persist security info=True;user id=sa; password=P@0com0v0;TrustServerCertificate=True;MultipleActiveResultSets=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -100,7 +100,7 @@ public partial class MyRegisterContext : DbContext
 
             entity.Property(e => e.ID_REGISTRO_PONTO).ValueGeneratedNever();
             entity.Property(e => e.DT_PONTO).HasColumnType("datetime");
-            entity.Property(e => e.TP_PONTO)
+            entity.Property(e => e.TP_Ponto)
                 .HasMaxLength(10)
                 .IsUnicode(false);
 
@@ -108,6 +108,37 @@ public partial class MyRegisterContext : DbContext
                 .HasForeignKey(d => d.ID_FUNCIONARIO)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_ID_FUNCIONARIO");
+        });
+
+        modelBuilder.Entity<SETOR>(entity =>
+        {
+            entity.HasKey(e => e.ID_SETOR).HasName("PK__SETOR__03370AF3099E52B6");
+
+            entity.ToTable("SETOR");
+
+            entity.Property(e => e.ID_SETOR).ValueGeneratedNever();
+            entity.Property(e => e.DS_NOME)
+                .HasMaxLength(80)
+                .IsUnicode(false);
+            entity.Property(e => e.FL_STATUS)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .IsFixedLength();
+
+            entity.HasOne(d => d.ID_EMPRESANavigation).WithMany(p => p.SETORs)
+                .HasForeignKey(d => d.ID_EMPRESA)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_ID_EMPRESAs");
+
+            entity.HasOne(d => d.ID_FUNCIONARIOsNavigation).WithMany(p => p.SETORs)
+                .HasForeignKey(d => d.ID_FUNCIONARIOs)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_ID_FUNCIONARIOs");
+
+            entity.HasOne(d => d.ID_USUARIONavigation).WithMany(p => p.SETORs)
+                .HasForeignKey(d => d.ID_USUARIO)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_ID_USUARIO");
         });
 
         modelBuilder.Entity<USUARIO>(entity =>

@@ -14,4 +14,6 @@ public partial class USUARIO
     public string DS_EMAIL { get; set; } = null!;
 
     public string DS_SENHA { get; set; } = null!;
+
+    public virtual ICollection<SETOR> SETORs { get; set; } = new List<SETOR>();
 }

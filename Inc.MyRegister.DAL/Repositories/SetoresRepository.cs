@@ -2,6 +2,7 @@
 using Inc.MyRegister.DAL.Models;
 using Inc.MyRegister.Domain.Entities;
 using Inc.MyRegister.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Inc.MyRegister.DAL.Repositories
 {
@@ -15,140 +16,142 @@ namespace Inc.MyRegister.DAL.Repositories
 
         public async Task<Setores> InsertSetoresAsync(Setores Request)
         {
-            Setor newSetores = new Setor()
+            SETOR newSetores = new SETOR()
             {
-                Nome = Request.Nome,
-                FL_Status = Request.FL_Status,
+                DS_NOME = Request.Nome,
+                FL_STATUS = Request.FL_Status,
             };
-            // dbMyRegister.Setores.Add(newSetores);
+            dbMyRegister.SETORs.Add(newSetores);
             await dbMyRegister.SaveChangesAsync();
-            Request.SetId(newSetores.Id);
+            Request.SetId(newSetores.ID_SETOR);
             return Request;
         }
         public async Task<IEnumerable<Setores>> GetAllSetoresAsync()
         {
-            //List<Setor> entity = await dbMyRegister.Setores
-            //    .Include(x => x.IdUsuariosNavigation)
-            //    .Include(x => x.IdFuncionariosNavigation)
-            //    .Include(x => x.IdEmpresaNavigation)
-            //    .ToListAsync();
-            //return entity.Select(res =>
-            //{
-            //    var Usuarios = res.IdUsuariosNavigation;
-            //    var UsuariosEntity = new Usuarios(Usuarios.Id, Usuarios.Nome, Usuarios.Cargo, Usuarios.Email, Usuarios.Senha);
+            List<SETOR> entity = await dbMyRegister.SETORs
+                .Include(x => x.ID_USUARIONavigation)
+                .Include(x => x.ID_FUNCIONARIOsNavigation)
+                .Include(x => x.ID_EMPRESANavigation)
+                .ToListAsync();
+            return entity.Select(res =>
+            {
+                var Usuarios = res.ID_USUARIONavigation;
+                var UsuariosEntity = new Usuarios(Usuarios.ID_USUARIO, Usuarios.DS_NOME, Usuarios.TP_CARGO, Usuarios.DS_EMAIL, Usuarios.DS_SENHA);
 
-            //    var Empresa = res.IdEmpresaNavigation;
-            //    var EmpresaEntity = new Empresas(Empresa.Id, Empresa.Nome, Empresa.CNPJ, Empresa.Dominio, Empresa.Contato, Empresa.Email, Empresa.Endereco);
+                var Empresas = res.ID_EMPRESANavigation;
+                var EmpresaEntity = new Empresas(Empresas.ID_EMPRESA, Empresas.DS_NOME, Empresas.CNPJ, Empresas.DOMINIO, Empresas.CONTATO_COPERATIVO, Empresas.EMAIL, Empresas.ENDERECO);
 
-            //    var Funcionario = res.IdFuncionariosNavigation;
-            //    var FuncionarioEntity = new Funcionarios(Funcionario.Id, Funcionario.Nome, Funcionario.Contato, Funcionario.Email, Funcionario.Matricula, Funcionario.CPF, Funcionario.Setor, Funcionario.Cargo, EmpresaEntity);
+                var Funcionario = res.ID_FUNCIONARIOsNavigation;
+                var FuncionarioEntity = new Funcionarios(Funcionario.ID_FUNCIONARIO, Funcionario.DS_NOME, Funcionario.CONTATO_FUNCIONARIO, Funcionario.EMAIL_CORPORATIVO, Funcionario.MATRICULA, Funcionario.CPF, Funcionario.SETOR, Funcionario.CARGO, EmpresaEntity);
 
-            //    return new Setores(res.Id, res.Nome, res.FL_Status, FuncionarioEntity, UsuariosEntity, EmpresaEntity);
+                return new Setores(res.ID_FUNCIONARIOs, res.DS_NOME, res.FL_STATUS, FuncionarioEntity, UsuariosEntity, EmpresaEntity);
 
-            //});
-            return new List<Setores>();
+            });
+
         }
         public async Task<Setores> GetSetoresByIdAsync(int Id)
         {
-            //var entity = await dbMyRegister.Setores
-            //  .Where(x => x.Id == Id)
-            //  .Include(x => x.IdEmpresaNavigation)
-            //  .Include(x => x.IdFuncionariosNavigation)
-            //  .Include(x => x.IdUsuariosNavigation)
-            //  .FirstAsync();
-            //if (entity is not null)
-            //{
-            //    var Usuarios = entity.IdUsuariosNavigation;
-            //    var UsuariosEntity = new Usuarios(Usuarios.Id, Usuarios.Nome, Usuarios.Cargo, Usuarios.Email, Usuarios.Senha);
+            var entity = await dbMyRegister.SETORs
+              .Where(x => x.ID_SETOR == Id)
+              .Include(x => x.ID_EMPRESANavigation)
+              .Include(x => x.ID_FUNCIONARIOsNavigation)
+              .Include(x => x.ID_USUARIONavigation)
+              .FirstAsync();
+            if (entity is not null)
+            {
+                var Usuarios = entity.ID_USUARIONavigation;
+                var UsuariosEntity = new Usuarios(Usuarios.ID_USUARIO, Usuarios.DS_NOME, Usuarios.TP_CARGO, Usuarios.DS_EMAIL, Usuarios.DS_SENHA);
 
-            //    var Empresa = entity.IdEmpresaNavigation;
-            //    var EmpresaEntity = new Empresas(Empresa.Id, Empresa.Nome, Empresa.CNPJ, Empresa.Dominio, Empresa.Contato, Empresa.Email, Empresa.Endereco);
+                var Empresa = entity.ID_EMPRESANavigation;
+                var EmpresaEntity = new Empresas(Empresa.ID_EMPRESA, Empresa.DS_NOME, Empresa.CNPJ, Empresa.DOMINIO, Empresa.CONTATO_COPERATIVO, Empresa.EMAIL, Empresa.ENDERECO);
 
-            //    var Funcionario = entity.IdFuncionariosNavigation;
-            //    var FuncionarioEntity = new Funcionarios(Funcionario.Id, Funcionario.Nome, Funcionario.Contato, Funcionario.Email, Funcionario.Matricula, Funcionario.CPF, Funcionario.Setor, Funcionario.Cargo, EmpresaEntity);
+                var Funcionario = entity.ID_FUNCIONARIOsNavigation;
+                var FuncionarioEntity = new Funcionarios(Funcionario.ID_FUNCIONARIO, Funcionario.DS_NOME, Funcionario.CONTATO_FUNCIONARIO, Funcionario.EMAIL_CORPORATIVO, Funcionario.MATRICULA, Funcionario.CPF, Funcionario.SETOR, Funcionario.CARGO, EmpresaEntity);
 
-            //    return new Setores(entity.Id, entity.Nome, entity.FL_Status, FuncionarioEntity, UsuariosEntity, EmpresaEntity);
-            //}
-            //else
-            //    throw new Exception("Setor não encontrado");
+                return new Setores(entity.ID_SETOR, entity.DS_NOME, entity.FL_STATUS, FuncionarioEntity, UsuariosEntity, EmpresaEntity);
+            }
+            else
+                throw new Exception("Setor não encontrado");
             return new Setores();
         }
         public async Task<IEnumerable<Setores>> GetSetorByEmpresaAsync(int EmpresaId)
         {
-            //List<Setor> entity = await dbMyRegister
-            //    .Setores
-            //    .Include(x => x.IdEmpresaNavigation)
-            //    .Include(x => x.IdFuncionariosNavigation)
-            //    .Include(x => x.IdUsuariosNavigation)
-            //    .Where(x => x.Id == EmpresaId)
-            //    .ToListAsync();
+            List<SETOR> entity = await dbMyRegister
+                .SETORs
+                .Include(x => x.ID_EMPRESANavigation)
+                .Include(x => x.ID_FUNCIONARIOsNavigation)
+                .Include(x => x.ID_USUARIONavigation)
+                .Where(x => x.ID_SETOR == EmpresaId)
+                .ToListAsync();
 
-            //return entity.Select(res =>
-            //{
-            //    var Empresa = res.IdEmpresaNavigation;
-            //    var EmpresaEntity = new Empresas(Empresa.Id, Empresa.Nome, Empresa.CNPJ, Empresa.Dominio, Empresa.Contato, Empresa.Email, Empresa.Endereco);
+            return entity.Select(res =>
+            {
+                var Empresa = res.ID_EMPRESANavigation;
+                var EmpresaEntity = new Empresas(Empresa.ID_EMPRESA, Empresa.DS_NOME, Empresa.CNPJ, Empresa.DOMINIO, Empresa.CONTATO_COPERATIVO, Empresa.EMAIL, Empresa.ENDERECO);
 
-            //    var Funcionario = res.IdFuncionariosNavigation;
-            //    var FuncionarioEntity = new Funcionarios(Funcionario.Id, Funcionario.Nome, Funcionario.Contato, Funcionario.Email, Funcionario.Matricula, Funcionario.CPF, Funcionario.Setor, Funcionario.Cargo, EmpresaEntity);
+                var Funcionario = res.ID_FUNCIONARIOsNavigation;
+                var FuncionarioEntity = new Funcionarios(Funcionario.ID_FUNCIONARIO, Funcionario.DS_NOME, Funcionario.CONTATO_FUNCIONARIO, Funcionario.EMAIL_CORPORATIVO, Funcionario.MATRICULA, Funcionario.CPF, Funcionario.SETOR, Funcionario.CARGO, EmpresaEntity);
 
-            //    var Usuario = res.IdUsuariosNavigation;
-            //    var UsuarioEntity = new Usuarios(Usuario.Id, Usuario.Nome, Usuario.Cargo, Usuario.Email, Usuario.Senha);
+                var Usuario = res.ID_USUARIONavigation;
+                var UsuarioEntity = new Usuarios(Usuario.ID_USUARIO, Usuario.DS_NOME, Usuario.TP_CARGO, Usuario.DS_EMAIL, Usuario.DS_SENHA);
 
-            //    return new Setores(res.Id, res.Nome, res.FL_Status, FuncionarioEntity, UsuarioEntity, EmpresaEntity);
-            //});
+                return new Setores(res.ID_SETOR, res.DS_NOME, res.FL_STATUS, FuncionarioEntity, UsuarioEntity, EmpresaEntity);
+            });
             return new List<Setores>();
         }
         public async Task<IEnumerable<Setores>> GetSetorByFuncionarioAsync(int FuncionarioId)
         {
-            //List<Setor> entity = await dbMyRegister
-            //    .Setores
-            //    .Include(x => x.IdEmpresaNavigation)
-            //    .Include(x => x.IdFuncionariosNavigation)
-            //    .Include(x => x.IdUsuariosNavigation)
-            //    .Where(x => x.Id == FuncionarioId)
-            //    .ToListAsync();
+            List<SETOR> entity = await dbMyRegister
+                .SETORs
+                .Include(x => x.ID_EMPRESANavigation)
+                .Include(x => x.ID_FUNCIONARIOsNavigation)
+                .Include(x => x.ID_USUARIONavigation)
+                .Where(x => x.ID_SETOR == FuncionarioId)
+                .ToListAsync();
 
-            //return entity.Select(res =>
-            //{
-            //    var Empresa = res.IdEmpresaNavigation;
-            //    var EmpresaEntity = new Empresas(Empresa.Id, Empresa.Nome, Empresa.CNPJ, Empresa.Dominio, Empresa.Contato, Empresa.Email, Empresa.Endereco);
+            return entity.Select(res =>
+            {
+                var Empresa = res.ID_EMPRESANavigation;
+                var EmpresaEntity = new Empresas(Empresa.ID_EMPRESA, Empresa.DS_NOME, Empresa.CNPJ, Empresa.DOMINIO, Empresa.CONTATO_COPERATIVO, Empresa.EMAIL, Empresa.ENDERECO);
 
-            //    var Funcionario = res.IdFuncionariosNavigation;
-            //    var FuncionarioEntity = new Funcionarios(Funcionario.Id, Funcionario.Nome, Funcionario.Contato, Funcionario.Email, Funcionario.Matricula, Funcionario.CPF, Funcionario.Setor, Funcionario.Cargo, EmpresaEntity);
+                var Funcionario = res.ID_FUNCIONARIOsNavigation;
+                var FuncionarioEntity = new Funcionarios(Funcionario.ID_FUNCIONARIO, Funcionario.DS_NOME, Funcionario.CONTATO_FUNCIONARIO, Funcionario.EMAIL_CORPORATIVO, Funcionario.MATRICULA, Funcionario.CPF, Funcionario.SETOR, Funcionario.CARGO, EmpresaEntity);
 
-            //    var Usuario = res.IdUsuariosNavigation;
-            //    var UsuarioEntity = new Usuarios(Usuario.Id, Usuario.Nome, Usuario.Cargo, Usuario.Email, Usuario.Senha);
+                var Usuario = res.ID_USUARIONavigation;
+                var UsuarioEntity = new Usuarios(Usuario.ID_USUARIO, Usuario.DS_NOME, Usuario.TP_CARGO, Usuario.DS_EMAIL, Usuario.DS_SENHA);
 
-            //    return new Setores(res.Id, res.Nome, res.FL_Status, FuncionarioEntity, UsuarioEntity, EmpresaEntity);
-            //});
+                return new Setores(res.ID_SETOR, res.DS_NOME, res.FL_STATUS, FuncionarioEntity, UsuarioEntity, EmpresaEntity);
+            });
             return new List<Setores>();
         }
         public async Task<IEnumerable<Setores>> GetSetorByUsuarioAsync(int UsuarioId)
         {
-            //List<Setor> entity = await dbMyRegister
-            //    .Setores
-            //    .Include(x => x.IdEmpresaNavigation)
-            //    .Include(x => x.IdFuncionariosNavigation)
-            //    .Include(x => x.IdUsuariosNavigation)
-            //    .Where(x => x.Id == UsuarioId)
-            //    .ToListAsync();
+            List<SETOR> entity = await dbMyRegister
+                .SETORs
+                .Include(x => x.ID_EMPRESANavigation)
+                .Include(x => x.ID_FUNCIONARIOsNavigation)
+                .Include(x => x.ID_USUARIONavigation)
+                .Where(x => x.ID_SETOR == UsuarioId)
+                .ToListAsync();
 
-            //return entity.Select(res =>
-            //{
-            //    var Empresa = res.IdEmpresaNavigation;
-            //    var EmpresaEntity = new Empresas(Empresa.Id, Empresa.Nome, Empresa.CNPJ, Empresa.Dominio, Empresa.Contato, Empresa.Email, Empresa.Endereco);
+            return entity.Select(res =>
+            {
+                var Empresa = res.ID_EMPRESANavigation;
+                var EmpresaEntity = new Empresas(Empresa.ID_EMPRESA, Empresa.DS_NOME, Empresa.CNPJ, Empresa.DOMINIO, Empresa.CONTATO_COPERATIVO, Empresa.EMAIL, Empresa.ENDERECO);
 
-            //    var Funcionario = res.IdFuncionariosNavigation;
-            //    var FuncionarioEntity = new Funcionarios(Funcionario.Id, Funcionario.Nome, Funcionario.Contato, Funcionario.Email, Funcionario.Matricula, Funcionario.CPF, Funcionario.Setor, Funcionario.Cargo, EmpresaEntity);
+                var Funcionario = res.ID_FUNCIONARIOsNavigation;
+                var FuncionarioEntity = new Funcionarios(Funcionario.ID_FUNCIONARIO, Funcionario.DS_NOME, Funcionario.CONTATO_FUNCIONARIO, Funcionario.EMAIL_CORPORATIVO, Funcionario.MATRICULA, Funcionario.CPF, Funcionario.SETOR, Funcionario.CARGO, EmpresaEntity);
 
-            //    var Usuario = res.IdUsuariosNavigation;
-            //    var UsuarioEntity = new Usuarios(Usuario.Id, Usuario.Nome, Usuario.Cargo, Usuario.Email, Usuario.Senha);
+                var Usuario = res.ID_USUARIONavigation;
+                var UsuarioEntity = new Usuarios(Usuario.ID_USUARIO, Usuario.DS_NOME, Usuario.TP_CARGO, Usuario.DS_EMAIL, Usuario.DS_SENHA);
 
-            //    return new Setores(res.Id, res.Nome, res.FL_Status, FuncionarioEntity, UsuarioEntity, EmpresaEntity);
-            //});
+                return new Setores(res.ID_SETOR, res.DS_NOME, res.FL_STATUS, FuncionarioEntity, UsuarioEntity, EmpresaEntity);
+            });
 
             return new List<Setores>();
+
         }
+
 
 
     }

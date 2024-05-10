@@ -8,11 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Inc.MyRegister.Application\Inc.MyRegister.Application.csproj" />
     <ProjectReference Include="..\Inc.MyRegister.DAL\Inc.MyRegister.DAL.csproj" />
   </ItemGroup>
 
