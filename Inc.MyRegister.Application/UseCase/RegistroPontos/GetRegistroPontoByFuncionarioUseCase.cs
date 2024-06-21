@@ -6,12 +6,6 @@ using Inc.MyRegister.Application.Interfaces.RegistroPontos;
 using Inc.MyRegister.Domain.Interfaces;
 using Inc.MyRegister.Shared.Models;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using _RegistroPontos = Inc.MyRegister.Domain.Entities.RegistroPontos;
 
 namespace Inc.MyRegister.Application.UseCase.RegistroPontos
 {
